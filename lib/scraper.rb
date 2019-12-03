@@ -7,12 +7,18 @@ class Scraper
   def self.scrape_index_page(index_url)
     student_hash_array = []
     doc = Nokogiri::HTML(open(index_url))
+<<<<<<< HEAD
     doc.css(".student-card").each do |card|
       student_hash = {
         :name => card.css(".student-name").text, 
         :location => card.css(".student-location").text,
         :profile_url => card.css("a").attribute("href").value}
       student_hash_array << student_hash
+=======
+    doc.css(".card-text-container").each do |card|
+      test = Hash.new(name: card.css(".student-name").text, location: card.css(".student-location").text)
+      binding.pry
+>>>>>>> 84259473ee03c0a4bc1636ae0f714b76c6524d8e
     end
     student_hash_array
   end
@@ -41,6 +47,7 @@ class Scraper
 
 end
 
+<<<<<<< HEAD
 # student name => doc.css(".student-card")[0].css(".student-name").text
 # student location => doc.css(".student-card")[0].css(".student-location").text
 # student profile_url => doc.css(".student-card")[0].css("a").attribute("href").value
@@ -51,3 +58,7 @@ end
 # blog => doc.css(".social-icon-container a")[index].attribute("href").value
 # profile_quote =>  doc.css(".vitals-text-container .profile-quote").text.strip
 # bio => doc.css(".description-holder p").text
+=======
+# student name => doc.css(".card-text-container")[0].css(".student-name").text
+# student location => doc.css(".card-text-container")[0].css(".student-location").text
+>>>>>>> 84259473ee03c0a4bc1636ae0f714b76c6524d8e
